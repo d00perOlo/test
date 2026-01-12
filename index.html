@@ -1,153 +1,145 @@
 <!DOCTYPE html>
-<html lang="pl">
+<html lang="pl" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="VELOCITY — nowoczesny wynajem aut" />
-  <title>VELOCITY | Cyfrowa Akceleracja Wynajmu</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="VELOCITY — nowoczesny wynajem aut: szybka rezerwacja, minimum formalności, maksymalna mobilność." />
+  <title>VELOCITY | Adrenaline Mobility</title>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,800;1,400;1,700;1,900&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            void: '#020202',
+            graphite: '#0a0a0a',
+            vermilion: {
+              DEFAULT: '#ff2a00',
+              500: '#ff2a00',
+              600: '#cc2200',
+            },
+            cyan: {
+              DEFAULT: '#00f0ff',
+              400: '#00f0ff',
+              500: '#00c8d4',
+            },
+            white: '#ffffff',
+          },
+          animation: {
+            'warp': 'warp 0.5s linear infinite',
+            'warp-slow': 'warp 2s linear infinite',
+            'slide-up': 'slideUp 0.4s cubic-bezier(0.2, 0.8, 0.2, 1) forwards',
+            'pulse-fast': 'pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            warp: {
+              '0%': { transform: 'translateX(-100vw) skewX(-45deg)' },
+              '100%': { transform: 'translateX(100vw) skewX(-45deg)' },
+            },
+            slideUp: {
+              '0%': { transform: 'translateY(20px)', opacity: '0' },
+              '100%': { transform: 'translateY(0)', opacity: '1' },
+            }
+          }
+        }
+      }
+    }
+  </script>
   <style>
     :root {
-      --navy: #0a0e17;
-      --teal: #00f2ff;
-      --orange: #ff8c00;
-      --dark-blue: #0f172a;
-      --white: #f0f4f8;
+      --vermilion: #ff2a00;
+      --cyan: #00f0ff;
     }
     
     body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--navy);
-      color: var(--white);
-      -webkit-font-smoothing: antialiased;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 110px;
-    }
-
-    /* Animation Keyframes */
-    @keyframes moveRight {
-      0% { transform: translateX(-110vw) skewX(-45deg); }
-      100% { transform: translateX(110vw) skewX(-45deg); }
-    }
-    @keyframes draw {
-      to { stroke-dashoffset: 0; }
-    }
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-18px); }
-    }
-
-    /* Utility Classes for specific effects */
-    .motion-line {
-      position: absolute;
-      height: 2px;
-      width: 320px;
-      opacity: 0.2;
-      background: linear-gradient(90deg, transparent, var(--teal), transparent);
-      animation: moveRight 3s linear infinite;
-      will-change: transform;
-      transform: translateZ(0);
-    }
-
-    .glass-card {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      border: 1px solid rgba(255, 255, 255, 0.10);
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
-    }
-    .glass-card:hover {
-      border-color: var(--teal);
-      transform: translateY(-5px);
-      background: rgba(255, 255, 255, 0.05);
-    }
-
-    .btn-primary {
-      background: var(--orange);
+      background-color: #020202;
       color: #fff;
+      overflow-x: hidden;
+    }
+
+    /* Speed Card - Replaces Glass Card */
+    .speed-card {
+      background: linear-gradient(135deg, rgba(20,20,20,0.9) 0%, rgba(5,5,5,0.95) 100%);
+      border: 1px solid #222;
+      position: relative;
+      transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transform: skewX(-10deg);
+    }
+    
+    /* Unskew content inside speed card */
+    .speed-card > * {
+      transform: skewX(10deg);
+    }
+
+    .speed-card:hover {
+      border-color: var(--vermilion);
+      box-shadow: -10px 10px 0px rgba(255, 42, 0, 0.1);
+      transform: skewX(-10deg) translate(-5px, -5px);
+    }
+
+    /* Primary Action Trigger */
+    .btn-ignite {
+      background: var(--vermilion);
+      color: #000;
       font-weight: 900;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
-      position: relative;
-      overflow: hidden;
+      font-style: italic;
+      clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+      transition: all 0.2s ease;
     }
-    .btn-primary:hover {
-      box-shadow: 0 0 22px rgba(255, 140, 0, 0.45);
-      transform: translateY(-1px) scale(1.02);
-      filter: saturate(1.05);
+    
+    .btn-ignite:hover {
+      background: #fff;
+      padding-right: 2.5rem; /* Simulation of movement */
+      box-shadow: 0 0 20px var(--vermilion);
     }
 
-    .text-gradient {
-      background: linear-gradient(90deg, #fff, var(--teal));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    /* Input Fields */
+    .input-speed {
+      background: transparent;
+      border-bottom: 2px solid #333;
+      color: white;
+      font-style: italic;
+      font-weight: 700;
+      transition: border-color 0.3s;
+      border-radius: 0;
+    }
+    .input-speed:focus {
+      outline: none;
+      border-color: var(--cyan);
+    }
+    .input-speed::placeholder {
+      color: #555;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    /* Utilities */
+    .text-outline {
+      -webkit-text-stroke: 1px rgba(255,255,255,0.2);
       color: transparent;
     }
-
-    .speed-path {
-      stroke-dasharray: 1000;
-      stroke-dashoffset: 1000;
-      animation: draw 1.8s forwards ease-in-out;
-    }
     
-    .float-animation {
-      animation: float 4s ease-in-out infinite;
-      will-change: transform;
-    }
-
-    /* Fleet Reveal Logic */
-    .fleet-card {
-      position: relative;
-      overflow: hidden;
-      isolation: isolate;
-    }
-    .fleet-photo {
-      position: absolute;
-      inset: 0;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      transform: scale(1.06);
-      transition: opacity 0.28s ease, transform 0.35s ease;
-      z-index: 0;
-      filter: saturate(1.05) contrast(1.05);
-    }
-    .fleet-photo::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10,14,23,0.78) 0%, rgba(10,14,23,0.58) 35%, rgba(10,14,23,0.78) 100%);
-    }
-    .fleet-abstract, .fleet-content {
-      position: relative;
-      z-index: 1;
-      transition: transform 0.28s ease, opacity 0.28s ease;
-    }
-    
-    @media (hover: hover) and (pointer: fine) {
-      .fleet-card:hover .fleet-photo { opacity: 1; transform: scale(1.00); }
-      .fleet-card:hover .fleet-abstract { opacity: 0.15; transform: translateY(6px); }
-      .fleet-card:hover .fleet-content { transform: translateY(-2px); }
-    }
-    
-    /* Active classes for JS/Mobile */
-    .fleet-card.active .fleet-photo { opacity: 1; transform: scale(1.00); }
-    .fleet-card.active .fleet-abstract { opacity: 0.15; transform: translateY(6px); }
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #333; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--vermilion); }
   </style>
 <script type="importmap">
 {
   "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
   }
 }
 </script>

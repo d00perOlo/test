@@ -2,28 +2,31 @@ import React from 'react';
 
 const Stats: React.FC = () => {
   return (
-    <section id="korzysci" className="bg-[#0f172a] py-16 md:py-20 border-y border-white/5">
-      <div className="max-w-7xl mx-auto px-6 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
-        <div className="text-center group">
-          <div className="text-4xl font-black text-[#00f2ff] mb-2 group-hover:scale-110 transition-transform">15 min</div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-500">Podstawienie auta</div>
-        </div>
-        <div className="text-center group">
-          <div className="text-4xl font-black text-[#00f2ff] mb-2 group-hover:scale-110 transition-transform">24/7</div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-500">Wsparcie</div>
-        </div>
-        <div className="text-center group">
-          <div className="text-4xl font-black text-[#00f2ff] mb-2 group-hover:scale-110 transition-transform">100%</div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-500">Cyfrowy proces</div>
-        </div>
-        <div className="text-center group">
-          <div className="text-4xl font-black text-[#00f2ff] mb-2 group-hover:scale-110 transition-transform">0 tarcia</div>
-          <div className="text-[10px] uppercase tracking-widest text-gray-500">Bez kolejek</div>
-        </div>
-      </div>
+    <section id="korzysci" className="relative z-20 py-10 bg-black/50 backdrop-blur-sm border-y border-white/10">
+      <div className="max-w-[1400px] mx-auto px-4">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          
+          {[
+            { val: '15 MIN', label: 'Start Time' },
+            { val: '99.9%', label: 'Availability' },
+            { val: '0', label: 'Paperwork' },
+            { val: '24/7', label: 'Support' }
+          ].map((stat, i) => (
+            <div key={i} className="group relative p-6 skew-x-[-12deg] border border-white/5 hover:border-vermilion/50 transition-colors bg-void">
+              <div className="skew-x-[12deg] text-center">
+                <div className="text-3xl md:text-5xl font-black italic text-white group-hover:text-vermilion transition-colors tracking-tighter">
+                  {stat.val}
+                </div>
+                <div className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan mt-1">
+                  {stat.label}
+                </div>
+              </div>
+              {/* Corner accent */}
+              <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-cyan opacity-50"></div>
+            </div>
+          ))}
 
-      <div className="max-w-7xl mx-auto px-6 md:px-8 mt-10 text-[11px] text-gray-500 uppercase tracking-widest">
-        Uwaga: warunki (kaucja / limity / strefy) zależą od modelu i lokalizacji.
+        </div>
       </div>
     </section>
   );

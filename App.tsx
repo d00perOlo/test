@@ -1,37 +1,36 @@
-import React from 'react';
-import Header from './components/Header';
-import Background from './components/Background';
+import React, { useEffect, useState } from 'react';
+import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
 import Fleet from './components/Fleet';
-import ChargingSection from './components/ChargingSection';
 import Process from './components/Process';
 import Booking from './components/Booking';
 import FinalCTA from './components/FinalCTA';
 import Footer from './components/Footer';
-import MobileCTA from './components/MobileCTA';
+import MotionBackground from './components/MotionBackground';
+import MobileNav from './components/MobileNav';
 
-const App: React.FC = () => {
+export default function App() {
   return (
-    <div className="relative min-h-screen overflow-x-hidden selection:bg-[#00f2ff] selection:text-[#0a0e17]">
-      <Background />
-      <Header />
+    <div className="relative">
+      <a className="skip-link" href="#main">Przejdź do treści</a>
       
+      <MotionBackground />
+      <Navbar />
+
       <main id="main">
         <div id="top" className="h-0" />
         <Hero />
         <Stats />
         <Fleet />
-        <ChargingSection />
         <Process />
         <Booking />
         <FinalCTA />
       </main>
 
       <Footer />
-      <MobileCTA />
+      
+      <MobileNav />
     </div>
   );
-};
-
-export default App;
+}
