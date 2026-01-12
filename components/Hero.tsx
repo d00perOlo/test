@@ -2,87 +2,116 @@ import React from 'react';
 
 const Hero: React.FC = () => {
   return (
-    <section className="min-h-screen flex flex-col justify-center px-4 md:px-12 relative overflow-hidden pt-20">
+    <section className="min-h-screen flex items-center relative overflow-hidden bg-void">
       
-      {/* Background Graphic Element - Huge skewed block */}
-      <div className="absolute top-0 right-[-20%] w-[70%] h-full bg-gradient-to-b from-gray-900/40 to-transparent skew-x-[-20deg] -z-10 border-l border-white/5"></div>
-
-      <div className="max-w-[1400px] mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
+      {/* 1. Motion Background Layer - Asymmetrical/Diagonal */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        {/* Deep Graphite Base */}
+        <div className="absolute inset-0 bg-[#080808]"></div>
         
-        {/* TEXT CONTENT */}
-        <div className="z-20 flex flex-col items-start">
+        {/* Aggressive Diagonal Slice (Graphite Lighter) */}
+        <div className="absolute top-[-20%] right-[-15%] w-[80%] h-[150%] bg-[#101010] skew-x-[-25deg] border-l border-white/5 origin-top"></div>
+        
+        {/* Speed Streaks (Cyan & Orange) - Pure Motion */}
+        <div className="absolute top-[40%] left-[-10%] w-[120%] h-[2px] bg-gradient-to-r from-transparent via-cyan/20 to-transparent skew-y-[5deg] blur-[2px]"></div>
+        <div className="absolute top-[65%] right-[-20%] w-[100%] h-[6px] bg-gradient-to-l from-transparent via-orange/10 to-transparent skew-y-[-3deg] blur-[4px]"></div>
+      </div>
+
+      <div className="max-w-[1600px] mx-auto w-full px-6 md:px-12 relative z-10 pt-24 md:pt-0">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
-          <div className="inline-flex items-center gap-2 mb-6 border border-cyan/30 bg-cyan/5 px-4 py-1 skew-x-[-12deg]">
-             <span className="skew-x-[12deg] text-cyan text-xs font-black italic tracking-widest uppercase">
-               System Online • 42 Auta Dostępne
-             </span>
+          {/* TEXT ENGINE - Occupies 7 cols on desktop */}
+          <div className="lg:col-span-7 flex flex-col items-start relative">
+            
+            {/* ECO SIGNAL: Strictly for environmental status */}
+            <div className="inline-flex items-center gap-3 mb-6 md:mb-8 border border-techGreen/30 bg-techGreen/dim px-4 py-1 skew-x-[-12deg] backdrop-blur-md">
+               <div className="w-1.5 h-1.5 bg-techGreen rounded-full animate-ping-slow"></div>
+               <span className="skew-x-[12deg] text-techGreen text-[10px] md:text-xs font-mono font-bold tracking-widest uppercase">
+                 ECO MODE: ACTIVE • REGENERACJA
+               </span>
+            </div>
+            
+            {/* Headline - Staggered & Motion-focused */}
+            <h1 className="flex flex-col font-black italic uppercase tracking-tighter leading-[0.8] select-none relative z-20">
+              {/* Part 1: Ghost/Outline - "LIMIT" */}
+              <span className="text-[12vw] lg:text-[10rem] text-transparent bg-clip-text bg-gradient-to-r from-white/20 to-transparent skew-x-[-12deg] translate-x-2 lg:translate-x-8 mix-blend-overlay">
+                LIMIT
+              </span>
+              
+              {/* Part 2: Connector - "TO" */}
+              <span className="text-4xl lg:text-7xl text-white ml-2 lg:ml-12 -my-2 lg:-my-4 skew-x-[-12deg] relative z-10">
+                TO
+              </span>
+              
+              {/* Part 3: Impact - "FIKCJA" (Hyper Orange) */}
+              <span className="text-[14vw] lg:text-[12rem] text-orange drop-shadow-[0_0_50px_rgba(255,59,0,0.4)] skew-x-[-12deg] -translate-x-2 lg:-translate-x-4 relative z-30">
+                FIKCJA
+              </span>
+            </h1>
+
+            {/* Subtext - Directional */}
+            <div className="mt-8 lg:mt-10 max-w-xl skew-x-[-12deg] ml-2 lg:ml-6">
+              <p className="text-lg lg:text-2xl text-gray-400 font-medium italic border-l-2 border-cyan pl-6 skew-x-[12deg]">
+                Czysta adrenalina na żądanie. Bez kluczyków. Bez biura.
+              </p>
+            </div>
+
+            {/* CTA Group - Launch Trigger */}
+            <div className="mt-12 lg:mt-16 ml-2 lg:ml-6 flex flex-col sm:flex-row gap-6 skew-x-[-12deg] relative z-40">
+               <a href="#rezerwacja" className="btn-ignite px-12 py-6 text-2xl tracking-widest hover:scale-105 transition-transform flex items-center gap-6 group shadow-[10px_10px_0px_rgba(0,0,0,0.5)]">
+                  <span className="skew-x-[12deg] font-black italic">ODPAL SILNIK</span>
+                  {/* Directional Arrow Icon */}
+                  <div className="w-0 h-0 border-t-[8px] border-t-transparent border-l-[14px] border-l-black border-b-[8px] border-b-transparent skew-x-[12deg] group-hover:translate-x-3 transition-transform duration-300"></div>
+               </a>
+            </div>
           </div>
 
-          <h1 className="text-7xl sm:text-8xl md:text-9xl font-black italic leading-[0.85] mb-8 tracking-tighter text-white uppercase mix-blend-lighten">
-            <span className="block text-outline opacity-50">Limit</span>
-            <span className="block">Is A</span>
-            <span className="text-vermilion">Lie.</span>
-          </h1>
+          {/* VISUAL ENGINE - Car bursting out of the frame */}
+          <div className="lg:col-span-5 relative h-[300px] lg:h-[700px] flex items-center justify-center lg:justify-end pointer-events-none mt-10 lg:mt-0">
+            
+            {/* Abstract Velocity Cone (Backlight) */}
+            <div className="absolute right-[-50%] top-1/2 -translate-y-1/2 w-[150vw] h-[500px] bg-gradient-to-r from-orange/10 to-transparent skew-x-[-60deg] blur-3xl mix-blend-screen"></div>
 
-          <p className="text-gray-400 text-lg md:text-xl font-medium italic max-w-md mb-12 border-l-4 border-cyan pl-6">
-            Czysta adrenalina na żądanie. Bez kluczyków. Bez biura. Tylko Ty i maszyna.
-          </p>
-
-          <div className="flex flex-col sm:flex-row gap-6 w-full sm:w-auto">
-            <a href="#rezerwacja" className="btn-ignite px-12 py-5 text-xl text-center shadow-[0_0_30px_rgba(255,42,0,0.4)]">
-              Ruszaj
-            </a>
-            <a href="#flota" className="px-12 py-5 border border-white/20 hover:border-cyan hover:text-cyan text-white font-black italic uppercase tracking-widest transition-colors skew-x-[-12deg] flex items-center justify-center">
-              <span className="skew-x-[12deg]">Zobacz Maszyny</span>
-            </a>
-          </div>
-        </div>
-
-        {/* VISUAL - THE RED CAR */}
-        <div className="relative z-10 w-full h-[300px] md:h-[500px] flex items-center justify-center pointer-events-none">
-           {/* Abstract Speed Lines behind car */}
-           <div className="absolute inset-0 bg-gradient-to-r from-cyan/20 to-transparent h-[2px] top-[60%] blur-sm"></div>
-           <div className="absolute inset-0 bg-gradient-to-r from-vermilion/40 to-transparent h-[4px] top-[65%] blur-md"></div>
-
-           <svg viewBox="0 0 800 400" className="w-full h-full drop-shadow-[0_20px_50px_rgba(255,42,0,0.2)]">
+            <svg viewBox="0 0 800 400" className="w-[140%] lg:w-full h-full drop-shadow-[20px_20px_60px_rgba(0,0,0,0.8)] z-10 translate-x-10 lg:translate-x-0" style={{ transform: 'perspective(1000px) rotateY(-10deg) rotateZ(3deg)' }}>
               <defs>
-                <linearGradient id="carBody" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="#cc2200" />
-                  <stop offset="50%" stopColor="#ff2a00" />
-                  <stop offset="100%" stopColor="#ff5500" />
+                <linearGradient id="heroCarBody" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#ff2a00" />
+                  <stop offset="100%" stopColor="#cc2200" />
                 </linearGradient>
-                <linearGradient id="glass" x1="0%" y1="0%" x2="0%" y2="100%">
-                  <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.8" />
+                <linearGradient id="heroGlass" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="#000" stopOpacity="0.9" />
                 </linearGradient>
+                <filter id="motionBlurX">
+                    <feGaussianBlur in="SourceGraphic" stdDeviation="12,0" />
+                </filter>
               </defs>
 
-              {/* Motion Blur Trail */}
-              <path d="M-100,280 L200,280" stroke="#ff2a00" strokeWidth="20" strokeLinecap="round" opacity="0.3" className="animate-warp" />
-              
-              {/* Car Silhouette (Low, aggressive) */}
+              {/* Speed Trails - Visualizing Velocity */}
+              <path d="M-300,280 L50,280" stroke="#FF3B00" strokeWidth="6" strokeLinecap="round" opacity="0.5" filter="url(#motionBlurX)" />
+              <path d="M-200,300 L0,300" stroke="#00F0FF" strokeWidth="3" strokeLinecap="round" opacity="0.3" filter="url(#motionBlurX)" />
+
+              {/* Aggressive Car Silhouette */}
               <g transform="translate(50, 50)">
-                {/* Wheels */}
-                <circle cx="150" cy="250" r="45" fill="#111" stroke="#333" strokeWidth="2" />
-                <circle cx="550" cy="250" r="50" fill="#111" stroke="#333" strokeWidth="2" />
-                
-                {/* Rims */}
-                <circle cx="150" cy="250" r="30" fill="none" stroke="#555" strokeWidth="8" strokeDasharray="10 10" className="animate-[spin_1s_linear_infinite]" />
-                <circle cx="550" cy="250" r="35" fill="none" stroke="#555" strokeWidth="8" strokeDasharray="10 10" className="animate-[spin_1s_linear_infinite]" />
+                 {/* Rear Wheel (Spinning visual) */}
+                 <circle cx="150" cy="250" r="45" fill="#111" stroke="#222" strokeWidth="2" />
+                 <circle cx="150" cy="250" r="40" fill="none" stroke="#FF3B00" strokeWidth="3" strokeDasharray="60 30" opacity="0.6" className="animate-[spin_0.4s_linear_infinite]" />
 
-                {/* Body */}
-                <path d="M50,250 Q40,200 130,180 L250,140 L450,135 L620,180 Q680,200 680,240 L650,260 L140,260 Z" fill="url(#carBody)" />
-                
-                {/* Cockpit */}
-                <path d="M260,145 L440,140 L480,180 L220,180 Z" fill="url(#glass)" />
+                 {/* Front Wheel */}
+                 <circle cx="550" cy="250" r="48" fill="#111" stroke="#222" strokeWidth="2" />
+                 <circle cx="550" cy="250" r="42" fill="none" stroke="#FF3B00" strokeWidth="3" strokeDasharray="60 30" opacity="0.6" className="animate-[spin_0.4s_linear_infinite]" />
 
-                {/* Side Intake */}
-                <path d="M480,180 L400,220 L550,210 Z" fill="#991100" />
-
-                {/* Headlight Stream */}
-                <path d="M640,210 L800,200 L800,240" fill="url(#glass)" opacity="0.5" />
+                 {/* Chassis - Sharp Angles */}
+                 <path d="M50,250 Q40,200 130,180 L280,150 L500,155 L650,200 L680,240 L650,260 L140,260 Z" fill="url(#heroCarBody)" />
+                 
+                 {/* Cockpit - Low Profile */}
+                 <path d="M290,155 L480,158 L520,200 L250,200 Z" fill="url(#heroGlass)" />
+                 
+                 {/* Aerodynamics Stream */}
+                 <path d="M650,200 L850,220 L800,240" fill="url(#heroGlass)" opacity="0.2" />
               </g>
-           </svg>
+            </svg>
+          </div>
         </div>
       </div>
     </section>

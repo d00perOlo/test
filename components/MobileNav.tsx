@@ -17,15 +17,15 @@ const MobileNav: React.FC = () => {
       <div className="skew-x-[5deg] flex items-center justify-between px-6 py-4">
          
          <a href="#flota" onClick={(e) => handleScroll(e, 'flota')} className="text-gray-400 font-bold uppercase text-[10px] tracking-widest hover:text-white">
-           Fleet
+           FLOTA
          </a>
 
-         <a href="#top" onClick={(e) => handleScroll(e, 'top')} className="w-10 h-10 bg-vermilion flex items-center justify-center font-black italic text-black">
-           V
+         <a href="#top" onClick={(e) => handleScroll(e, 'top')} className="w-10 h-10 bg-orange flex items-center justify-center font-black italic text-black">
+           O
          </a>
 
          <a href="#rezerwacja" onClick={(e) => handleScroll(e, 'rezerwacja')} className="text-gray-400 font-bold uppercase text-[10px] tracking-widest hover:text-white">
-           Book
+           START
          </a>
       </div>
     </nav>
