@@ -13,7 +13,7 @@ const Footer: React.FC = () => {
             <div className="w-8 h-8 bg-orange skew-x-[-12deg] flex items-center justify-center">
               <span className="font-black italic text-black skew-x-[12deg]">O</span>
             </div>
-            <span className="text-xl font-black italic tracking-tighter text-white">OloSiTi</span>
+            <span className="text-xl font-black italic tracking-tighter text-white">OloSiTiRENT</span>
           </div>
           <p className="text-gray-500 text-sm italic leading-relaxed font-medium">
             Przyszłość wynajmu jest cyfrowa. Projektujemy doświadczenie mobilności: szybko, czytelnie, bez tarcia.
@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-7xl mx-auto mt-14 pt-8 border-t border-white/5 flex flex-col md:flex-row gap-4 md:gap-0 md:justify-between text-[10px] text-gray-600 uppercase tracking-widest font-bold">
-        <span>© 2026 OloSiTi MOBILITY SYSTEMS.</span>
+        <span>© 2026 OloSiTiRENT MOBILITY SYSTEMS.</span>
         <span className="flex gap-4 justify-start md:justify-end text-orange flex-wrap">
           <span>Warszawa</span><span>Berlin</span><span>Londyn</span><span>Zielona Góra</span>
         </span>

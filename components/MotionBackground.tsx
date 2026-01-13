@@ -6,9 +6,15 @@ const MotionBackground: React.FC = () => {
       {/* Deep Graphite Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#121212] to-[#050505] opacity-90"></div>
       
-      {/* Graphite/Carbon Fiber Texture Overlay */}
-      <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E")`
+      {/* Premium Graphite/Carbon Fiber Texture Overlay */}
+      <div className="absolute inset-0 opacity-[0.06] mix-blend-overlay" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='12' viewBox='0 0 12 12' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h6v6H0V0zm6 6h6v6H6V6z' fill='%23ffffff' fill-opacity='0.1'/%3E%3Cpath d='M0 0h12v12H0V0zm1 1h4v4H1V1zm6 6h4v4H7V7z' fill='%23000000' fill-opacity='0.2'/%3E%3C/svg%3E")`
+      }}></div>
+
+      {/* Fine Scanline Texture for extra Tech depth */}
+      <div className="absolute inset-0 opacity-[0.02] pointer-events-none" style={{
+        backgroundImage: 'linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06))',
+        backgroundSize: '100% 2px, 3px 100%'
       }}></div>
 
       {/* Cyan Tech Lines (Navigation/Flow) */}

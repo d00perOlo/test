@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
@@ -12,6 +12,8 @@ import MotionBackground from './components/MotionBackground';
 import MobileNav from './components/MobileNav';
 
 export default function App() {
+  const [isPluggedIn, setIsPluggedIn] = useState(false);
+
   return (
     <div className="relative">
       <a className="skip-link" href="#main">Przejdź do treści</a>
@@ -24,9 +26,9 @@ export default function App() {
         <Hero />
         <Stats />
         <Fleet />
-        <ChargingInfrastructure />
+        <ChargingInfrastructure onConnectChange={setIsPluggedIn} />
         <Process />
-        <Booking />
+        <Booking isPluggedIn={isPluggedIn} />
         <FinalCTA />
       </main>
 
