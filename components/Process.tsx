@@ -8,8 +8,8 @@ const Process: React.FC = () => {
 
       <div className="max-w-[1400px] mx-auto px-6 relative z-10">
         <div className="mb-12 md:hidden">
-          <h2 className="text-3xl font-black italic uppercase text-white tracking-tighter">
-            PROCEDURA <span className="text-cyan">STARTU</span>
+          <h2 className="text-3xl font-black italic uppercase tracking-tighter">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">PROCEDURA</span> <span className="text-cyan">STARTU</span>
           </h2>
         </div>
 

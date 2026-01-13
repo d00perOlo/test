@@ -17,10 +17,21 @@ const cars: CarModel[] = [
 const Fleet: React.FC = () => {
   return (
     <section id="flota" className="py-24 md:py-32 px-6 overflow-hidden bg-gradient-to-b from-void to-graphite-900">
+      <style>{`
+        @keyframes cardHoverPulse {
+          0% { box-shadow: -8px 8px 0px rgba(255, 59, 0, 0.15); }
+          50% { box-shadow: -12px 12px 20px rgba(255, 59, 0, 0.3); border-color: #FF5500; }
+          100% { box-shadow: -8px 8px 0px rgba(255, 59, 0, 0.15); }
+        }
+        .speed-card:hover {
+          animation: cardHoverPulse 2s infinite ease-in-out;
+          transform: skewX(-10deg) translate(-6px, -6px); /* Enhanced lift */
+        }
+      `}</style>
       <div className="max-w-[1400px] mx-auto">
         <div className="flex items-end gap-6 mb-16">
-          <h2 className="text-5xl md:text-7xl font-black italic uppercase text-white tracking-tighter leading-none">
-            WYBIERZ <span className="text-orange">BROŃ</span>
+          <h2 className="text-5xl md:text-7xl font-black italic uppercase tracking-tighter leading-none">
+            <span className="text-transparent bg-clip-text bg-gradient-to-br from-white via-gray-200 to-gray-500">WYBIERZ</span> <span className="text-orange">BROŃ</span>
           </h2>
           <div className="hidden md:block h-[4px] flex-1 bg-gradient-to-r from-orange to-transparent skew-x-[-45deg] mb-4"></div>
         </div>
@@ -37,10 +48,10 @@ const Fleet: React.FC = () => {
 
 const FleetCard: React.FC<{ car: CarModel }> = ({ car }) => {
   return (
-    <div className="speed-card group h-[400px] flex flex-col justify-end p-8 relative overflow-hidden">
+    <div className="speed-card group h-[400px] flex flex-col justify-end p-8 relative overflow-hidden transition-all duration-300">
       
-      {/* Tech Line Connector */}
-      <div className="tech-line absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300"></div>
+      {/* Tech Line Connector - Enhanced Glow */}
+      <div className="tech-line absolute top-0 left-0 h-[2px] w-0 bg-cyan transition-all duration-300 group-hover:shadow-[0_0_20px_#FF3B00] group-hover:bg-orange"></div>
 
       {/* Background Glow - Orange for power */}
       <div className="absolute top-0 right-0 w-[200px] h-[200px] bg-orange/10 blur-[80px] rounded-full translate-x-1/2 -translate-y-1/2 group-hover:bg-orange/20 transition-colors"></div>
@@ -66,7 +77,22 @@ const FleetCard: React.FC<{ car: CarModel }> = ({ car }) => {
           )}
         </div>
 
-        <h3 className="text-4xl font-black italic text-white uppercase mb-4">{car.name}</h3>
+        <h3 className="text-4xl font-black italic text-white uppercase mb-4 flex items-center gap-3">
+          {car.name}
+          {car.eco && (
+             <div className="relative flex items-center justify-center">
+               <div className="absolute inset-0 bg-techGreen/30 blur-[4px] animate-pulse-fast"></div>
+               <svg 
+                 xmlns="http://www.w3.org/2000/svg" 
+                 className="w-6 h-6 text-techGreen relative z-10" 
+                 viewBox="0 0 24 24" 
+                 fill="currentColor"
+               >
+                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+               </svg>
+             </div>
+          )}
+        </h3>
         
         <div className="flex justify-between items-end border-t border-white/10 pt-4 group-hover:border-orange/50 transition-colors">
           <div>

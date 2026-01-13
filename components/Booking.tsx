@@ -11,7 +11,7 @@ const Booking: React.FC = () => {
       <div className="max-w-5xl mx-auto">
         <div className="mb-12">
           <h2 className="text-5xl md:text-8xl font-black italic uppercase text-center tracking-tighter">
-            GOTOWY NA <span className="text-orange">START?</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-500">GOTOWY NA</span> <span className="text-orange">START?</span>
           </h2>
         </div>
 

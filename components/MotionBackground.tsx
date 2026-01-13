@@ -6,6 +6,11 @@ const MotionBackground: React.FC = () => {
       {/* Deep Graphite Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0a0a] via-[#121212] to-[#050505] opacity-90"></div>
       
+      {/* Graphite/Carbon Fiber Texture Overlay */}
+      <div className="absolute inset-0 opacity-[0.05] mix-blend-overlay" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg width='4' height='4' viewBox='0 0 4 4' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2' stroke='%23ffffff' stroke-width='1'/%3E%3C/svg%3E")`
+      }}></div>
+
       {/* Cyan Tech Lines (Navigation/Flow) */}
       <div className="absolute h-[1px] w-[500px] bg-gradient-to-r from-transparent via-cyan to-transparent top-[10%] opacity-30 animate-warp"></div>
       <div className="absolute h-[2px] w-[800px] bg-gradient-to-r from-transparent via-cyan to-transparent top-[30%] opacity-10 animate-warp-slow left-[-20%]"></div>

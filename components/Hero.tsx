@@ -13,8 +13,8 @@ const Hero: React.FC = () => {
         <div className="absolute top-[-20%] right-[-15%] w-[80%] h-[150%] bg-[#101010] skew-x-[-25deg] border-l border-white/5 origin-top"></div>
         
         {/* Speed Streaks (Cyan & Orange) - Pure Motion */}
-        <div className="absolute top-[40%] left-[-10%] w-[120%] h-[2px] bg-gradient-to-r from-transparent via-cyan/20 to-transparent skew-y-[5deg] blur-[2px]"></div>
-        <div className="absolute top-[65%] right-[-20%] w-[100%] h-[6px] bg-gradient-to-l from-transparent via-orange/10 to-transparent skew-y-[-3deg] blur-[4px]"></div>
+        <div className="absolute top-[40%] left-[-10%] w-[120%] h-[2px] bg-gradient-to-r from-transparent via-cyan/20 to-transparent skew-y-[5deg] blur-[2px] animate-pulse-fast"></div>
+        <div className="absolute top-[65%] right-[-20%] w-[100%] h-[6px] bg-gradient-to-l from-transparent via-orange/10 to-transparent skew-y-[-3deg] blur-[4px] animate-pulse"></div>
       </div>
 
       <div className="max-w-[1600px] mx-auto w-full px-6 md:px-12 relative z-10 pt-24 md:pt-0">
@@ -82,27 +82,73 @@ const Hero: React.FC = () => {
                   <stop offset="0%" stopColor="#00f0ff" stopOpacity="0.5" />
                   <stop offset="100%" stopColor="#000" stopOpacity="0.9" />
                 </linearGradient>
+                <linearGradient id="headlightBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#fff" stopOpacity="0.8" />
+                  <stop offset="100%" stopColor="#00f0ff" stopOpacity="0" />
+                </linearGradient>
+                <linearGradient id="exhaustFlame" x1="100%" y1="0%" x2="0%" y2="0%">
+                  <stop offset="0%" stopColor="#FF3B00" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="#FF9000" stopOpacity="0" />
+                </linearGradient>
                 <filter id="motionBlurX">
                     <feGaussianBlur in="SourceGraphic" stdDeviation="12,0" />
                 </filter>
               </defs>
+              
+              <style>{`
+                @keyframes rush {
+                  0% { stroke-dashoffset: 400; opacity: 0; }
+                  20% { opacity: 0.8; }
+                  100% { stroke-dashoffset: -400; opacity: 0; }
+                }
+                @keyframes flicker {
+                   0%, 100% { opacity: 0.8; transform: scaleX(1); }
+                   50% { opacity: 0.4; transform: scaleX(0.9); }
+                }
+                @keyframes beamPulse {
+                   0%, 100% { opacity: 0.3; }
+                   50% { opacity: 0.6; }
+                }
+                .animate-rush {
+                  animation: rush 0.6s linear infinite;
+                }
+                .animate-exhaust {
+                  animation: flicker 0.1s steps(4) infinite;
+                  transform-origin: right center;
+                  transform-box: fill-box;
+                }
+                .animate-beam {
+                   animation: beamPulse 2s ease-in-out infinite;
+                }
+              `}</style>
 
-              {/* Speed Trails - Visualizing Velocity */}
-              <path d="M-300,280 L50,280" stroke="#FF3B00" strokeWidth="6" strokeLinecap="round" opacity="0.5" filter="url(#motionBlurX)" />
-              <path d="M-200,300 L0,300" stroke="#00F0FF" strokeWidth="3" strokeLinecap="round" opacity="0.3" filter="url(#motionBlurX)" />
+              {/* Aggressive Speed Trails - Directional & Sharp */}
+              <g opacity="0.6">
+                 <path d="M-400,280 L50,280" stroke="#FF3B00" strokeWidth="4" strokeLinecap="square" filter="url(#motionBlurX)" className="animate-rush" strokeDasharray="50 350" />
+                 <path d="M-300,320 L100,320" stroke="#00F0FF" strokeWidth="2" strokeLinecap="square" filter="url(#motionBlurX)" className="animate-rush" style={{animationDelay: '0.1s', animationDuration: '0.5s'}} strokeDasharray="100 200" />
+                 <path d="M-500,180 L200,180" stroke="#fff" strokeWidth="1" strokeLinecap="square" filter="url(#motionBlurX)" className="animate-rush" style={{animationDelay: '0.3s', animationDuration: '0.7s'}} strokeDasharray="20 400" />
+              </g>
 
               {/* Aggressive Car Silhouette */}
               <g transform="translate(50, 50)">
-                 {/* Rear Wheel (Spinning visual) */}
+                 {/* Exhaust Effect (Afterburner) */}
+                 <path d="M50,240 L-20,245 L50,250 Z" fill="url(#exhaustFlame)" className="animate-exhaust" />
+                 <path d="M50,240 L-40,230 L50,260 Z" fill="url(#exhaustFlame)" opacity="0.5" className="animate-exhaust" style={{animationDelay: '0.05s'}} />
+
+                 {/* Headlights (Pulsating Beams) */}
+                 <path d="M680,230 L900,180 L900,300 Z" fill="url(#headlightBeam)" className="animate-beam" />
+                 <circle cx="670" cy="245" r="4" fill="#fff" className="animate-pulse" />
+
+                 {/* Rear Wheel */}
                  <circle cx="150" cy="250" r="45" fill="#111" stroke="#222" strokeWidth="2" />
-                 <circle cx="150" cy="250" r="40" fill="none" stroke="#FF3B00" strokeWidth="3" strokeDasharray="60 30" opacity="0.6" className="animate-[spin_0.4s_linear_infinite]" />
+                 <circle cx="150" cy="250" r="40" fill="none" stroke="#FF3B00" strokeWidth="3" strokeDasharray="60 30" opacity="0.6" className="animate-spin" style={{ animationDuration: '0.4s', transformBox: 'fill-box', transformOrigin: 'center' }} />
 
                  {/* Front Wheel */}
                  <circle cx="550" cy="250" r="48" fill="#111" stroke="#222" strokeWidth="2" />
-                 <circle cx="550" cy="250" r="42" fill="none" stroke="#FF3B00" strokeWidth="3" strokeDasharray="60 30" opacity="0.6" className="animate-[spin_0.4s_linear_infinite]" />
+                 <circle cx="550" cy="250" r="42" fill="none" stroke="#FF3B00" strokeWidth="3" strokeDasharray="60 30" opacity="0.6" className="animate-spin" style={{ animationDuration: '0.4s', transformBox: 'fill-box', transformOrigin: 'center' }} />
 
                  {/* Chassis - Sharp Angles */}
-                 <path d="M50,250 Q40,200 130,180 L280,150 L500,155 L650,200 L680,240 L650,260 L140,260 Z" fill="url(#heroCarBody)" />
+                 <path d="M50,250 Q40,200 130,180 L280,150 L500,155 L650,200 L680,240 L650,260 L140,260 Z" fill="url(#heroCarBody)" className="animate-[pulse_0.1s_linear_infinite]" />
                  
                  {/* Cockpit - Low Profile */}
                  <path d="M290,155 L480,158 L520,200 L250,200 Z" fill="url(#heroGlass)" />

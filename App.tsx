@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Stats from './components/Stats';
 import Fleet from './components/Fleet';
+import ChargingInfrastructure from './components/ChargingInfrastructure';
 import Process from './components/Process';
 import Booking from './components/Booking';
 import FinalCTA from './components/FinalCTA';
@@ -23,6 +24,7 @@ export default function App() {
         <Hero />
         <Stats />
         <Fleet />
+        <ChargingInfrastructure />
         <Process />
         <Booking />
         <FinalCTA />
